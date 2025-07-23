@@ -3,8 +3,12 @@ package com.qrproject.qr_street_backend.controller;
 import com.qrproject.qr_street_backend.model.Content;
 import com.qrproject.qr_street_backend.service.ContentService;
 import com.qrproject.qr_street_backend.service.ExternalApiService;
+import com.qrproject.qr_street_backend.service.QRCodeService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +24,8 @@ public class ContentController {
 
     @Autowired
     private ExternalApiService externalApiService;
+    @Autowired
+    private QRCodeService qrCodeService;
 
     @GetMapping
     public List<Content> getAllContents() {
@@ -40,6 +46,23 @@ public class ContentController {
     public Content getRandomContent() {
         Content content = externalApiService.fetchRickAndMortyCharacter();
         return contentService.saveContent(content);
+    }
+
+    @GetMapping("/qr/{id}")
+    public ResponseEntity<byte[]> generateQRCode(@PathVariable String id) {
+        try {
+            String url = "http://localhost:8080/api/content/" + id;
+            byte[] qrCode = qrCodeService.generateQRCode(url);
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.IMAGE_PNG)
+                    .body(qrCode);
+
+        }
+
+        catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
 }
