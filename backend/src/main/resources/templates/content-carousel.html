@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Street - Character</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            animation: slideInUp 0.6s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .character-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 5px solid #667eea;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .character-image:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-color: #764ba2;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .character-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            animation: fadeInLeft 0.8s ease-out 0.2s both;
+            transition: color 0.3s ease;
+        }
+
+        .character-title:hover {
+            color: #667eea;
+            cursor: default;
+        }
+
+        .character-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+            animation: fadeInRight 0.8s ease-out 0.4s both;
+            line-height: 1.5;
+        }
+
+        .qr-street-badge {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 12px;
+            display: inline-block;
+            animation: bounceIn 1s ease-out 0.6s both;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .qr-street-badge:hover {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+
+        /* Keyframe Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(20px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel-container">
+        <img th:src="${content.imageUrl}" th:alt="${content.title}" class="character-image" />
+        <div class="character-title" th:text="${content.title}">Character Name</div>
+        <div class="character-description" th:text="${content.description}">Character Description</div>
+        <div class="qr-street-badge">QR Street Project</div>
+    </div>
+</body>
+
+</html>

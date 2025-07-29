@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: qr-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - qr-network
+
+  backend:
+    build: ./backend
+    container_name: qr-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/qrproject
+    networks:
+      - qr-network
+
+  frontend:
+    build: ./frontend
+    container_name: qr-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - qr-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  qr-network:
+    driver: bridge
