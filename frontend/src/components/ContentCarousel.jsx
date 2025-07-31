@@ -10,7 +10,7 @@ const ContentCarousel = () => {
     setError(null);
 
     try {
-      const response = await fetch("/api/content/random");
+      const response = await fetch("https://qrstreet.io/api/content/random");
       if (!response.ok) {
         throw new Error("Failed to fetch content");
       }
@@ -66,8 +66,16 @@ const ContentCarousel = () => {
         <p className="text-gray-600 mb-6 leading-relaxed">
           {content?.description}
         </p>
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full text-sm inline-block hover:scale-105 transition-transform cursor-pointer shadow-md">
-          QR Street Project
+        <div className="space-y-4">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full text-sm inline-block hover:scale-105 transition-transform cursor-pointer shadow-md">
+            QR Street Project
+          </div>
+          <button
+            onClick={fetchRandomContent}
+            className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-6 py-3 rounded-full text-lg font-bold transform hover:scale-105 transition-all duration-300 shadow-lg"
+          >
+            🎲 Yeni Karakter Gör
+          </button>
         </div>
       </div>
     </div>

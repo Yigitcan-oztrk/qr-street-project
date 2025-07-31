@@ -6,7 +6,7 @@
 - ✅ Spring Boot + MongoDB backend
 - ✅ Rick & Morty API entegrasyonu  
 - ✅ Duplicate prevention
-- ⏳ QR Code generation (coming soon)
-- ⏳ React frontend (coming soon)
+- ✅ QR Code generation
+- ✅ React frontend 
 
 ## API Endpoints
