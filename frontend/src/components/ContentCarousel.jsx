@@ -5,12 +5,14 @@ const ContentCarousel = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080';
+
   const fetchRandomContent = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch("https://qrstreet.io/api/content/random");
+      const response = await fetch(`${API_BASE_URL}/api/content/random`);
       if (!response.ok) {
         throw new Error("Failed to fetch content");
       }
