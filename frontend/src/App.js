@@ -4,6 +4,7 @@ import Layout from './layout/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Characters from './pages/Characters';
+import Marvel from './pages/Marvel';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/characters" element={<Characters />} />
+          <Route path="/marvel" element={<Marvel />} />
         </Routes>
       </Layout>
     </Router>

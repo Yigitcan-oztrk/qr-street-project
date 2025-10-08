@@ -36,7 +36,15 @@ const Header = () => {
                 isActive('/characters') ? 'text-blue-200 border-b-2 border-blue-200' : ''
               }`}
             >
-              Karakterler
+              Rick & Morty
+            </Link>
+            <Link
+              to="/marvel"
+              className={`hover:text-blue-200 transition-colors ${
+                isActive('/marvel') ? 'text-blue-200 border-b-2 border-blue-200' : ''
+              }`}
+            >
+              Marvel
             </Link>
             <Link
               to="/about"
@@ -80,7 +88,14 @@ const Header = () => {
                 className="block px-3 py-2 rounded-md hover:bg-blue-700 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Karakterler
+                Rick & Morty
+              </Link>
+              <Link
+                to="/marvel"
+                className="block px-3 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Marvel
               </Link>
               <Link
                 to="/about"

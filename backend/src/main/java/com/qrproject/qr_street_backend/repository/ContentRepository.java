@@ -13,6 +13,8 @@ public interface ContentRepository extends MongoRepository<Content, String> {
 
     Optional<Content> findByExternalId(Integer externalId);
 
+    Optional<Content> findByExternalIdAndSource(Integer externalId, String source);
+
     Content findByIdAndCategory(String id, String category);
 
 }
