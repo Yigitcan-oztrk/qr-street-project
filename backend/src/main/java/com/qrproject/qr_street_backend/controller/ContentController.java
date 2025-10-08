@@ -48,6 +48,12 @@ public class ContentController {
         return contentService.saveContent(content);
     }
 
+    @GetMapping("/random/marvel")
+    public Content getRandomMarvelCharacter() {
+        Content content = externalApiService.fetchMarvelCharacter();
+        return contentService.saveContent(content);
+    }
+
     @GetMapping("/qr/{id}")
     public ResponseEntity<byte[]> generateQRCode(@PathVariable String id) {
         try {

@@ -31,6 +31,9 @@ public class Content {
     @Indexed(unique = true)
     private Integer externalId;
 
+    @Field
+    private String source; // "rickandmorty" veya "marvel"
+
     // Constructor
     public Content() {
         this.createdAt = LocalDateTime.now();
@@ -91,5 +94,13 @@ public class Content {
 
     public void setExternalId(Integer externalId) {
         this.externalId = externalId;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }
